@@ -80,13 +80,13 @@
 			if ($moveResult != true) {
 				$errors[] = "Загрузка файла не удалась";
 			}
-			require_once("functions/image_resize_imagick.php");
-			$targetFile = $photoFolderLocation . $db_file_name;
-			$resizedFile = $photoFolderLocationMin . $db_file_name;
-			$wmax = 135;
-			$hmax = 200;
-			$img = createThumbnail($targetFile, $wmax, $hmax);
-			$img->writeImage($resizedFile);
+			// require_once("functions/image_resize_imagick.php");
+			// $targetFile = $photoFolderLocation . $db_file_name;
+			// $resizedFile = $photoFolderLocationMin . $db_file_name;
+			// $wmax = 135;
+			// $hmax = 200;
+			// $img = createThumbnail($targetFile, $wmax, $hmax);
+			// $img->writeImage($resizedFile);
 		}
 			$query = "UPDATE films SET
 			name = '" . mysqli_real_escape_string($link, $title) . "',

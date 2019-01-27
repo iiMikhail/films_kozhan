@@ -18,8 +18,13 @@
 					<div class="user-content">
 						<p><?php echo $film[$key]['description'] ?></p>
 					</div>
-					<a class="button-update" href="edit.php?id=<?=$film[$key]['id']?>">&#9998</a>
-					<a class="mt-0 button-delete" href="?action=delete&id=<?=$film[$key]['id']?>">X</a>
+					<?php if ( isset($_SESSION['user']) ) {
+						if($_SESSION['user'] =='admin') { ?>
+							<a class="button-update" href="edit.php?id=<?=$film[$key]['id']?>">&#9998</a>
+							<a class="mt-0 button-delete" href="?action=delete&id=<?=$film[$key]['id']?>">X</a>
+						<?php }
+					} ?>
+
 			<!-- //Описание фильма -->
 		</div>
 	</div>

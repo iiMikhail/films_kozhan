@@ -6,5 +6,6 @@
 
 	define('HOST', 'http://' . $_SERVER['HTTP_HOST'] . '/');
 	define('ROOT', 'http://' . dirname(__FILE__) . '/');
+	session_start();
 	// phpinfo();
 ?>

@@ -9,9 +9,15 @@
 				<img height="200px" src="<?=HOST?>films/data/films/iphone360_843649.jpg" alt="">
 				<h4 class="title-4"><?php echo $film[$key]['name'] ?></h4>
 				<div class="badge"><?php echo $film[$key]['type'] ?></div>
-				<div class="badge"><?php echo $film[$key]['year'] ?></div>	
-				<a class="button-update" href="edit.php?id=<?=$film[$key]['id']?>">&#9998</a>
-				<a class="button-delete" href="?action=delete&id=<?=$film[$key]['id']?>">X</a>
+				<div class="badge"><?php echo $film[$key]['year'] ?></div>
+				<?php if ( isset($_SESSION['user']) ) {
+					if($_SESSION['user'] =='admin') { ?>
+						<a class="button-update" href="edit.php?id=<?=$film[$key]['id']?>">&#9998</a>
+						<a class="button-delete" href="?action=delete&id=<?=$film[$key]['id']?>">X</a>
+					<?php }
+				} ?>
+				
+				
 			</div>
 		</a>
 		<?php  

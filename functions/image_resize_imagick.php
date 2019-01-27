@@ -1,7 +1,7 @@
 <?php
 function createThumbnail($imagePath, $cropWidth = 100, $cropHeight = 100) {
 	// read image
-	$imagick = new imagick($imagePath);
+	$imagick = new Imagick($imagePath);
 	$width = $imagick->getImageWidth();
 	$height = $imagick->getImageHeight();
 
