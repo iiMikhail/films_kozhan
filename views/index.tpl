@@ -16,7 +16,8 @@
 						<a class="button-delete" href="?action=delete&id=<?=$film[$key]['id']?>">X</a>
 					<?php }
 				} ?>
-				
+				<a href=""></a>
+				<a href=""></a>
 				
 			</div>
 		</a>
