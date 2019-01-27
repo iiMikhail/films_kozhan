@@ -5,13 +5,26 @@
 	$link = db_connect();
 	include('views/login.tpl');
 	if ( isset($_POST['enter']) ) {
-		$userName = 'Daruma';
-		$userPassword = '123';
-		if ( $_POST['user-name'] == $userName ) {
-			if ( $_POST['user-password'] == $userPassword ) {
+		$userName = $_POST['user-name'];
+		$userPassword = $_POST['user-password'];
+		$group = 'admin';
+		// if ( $_POST['user-name'] == $userName ) {
+		// 	if ( $_POST['user-password'] == $userPassword ) {
+		// 		session_start();
+		// 		$_SESSION['user'] = 'admin';
+		// 		header('location: /films/login.php');
+		// 	}
+		// }
+		$login = "SELECT * FROM users WHERE name = '" . $userName . "'";
+		mysqli_query($link, $login);
+		if( mysqli_affected_rows($link) == 1 ) {
+			$password = "SELECT * FROM `users` WHERE `name` = '" . $userPassword . "'";
+			mysqli_query($link, $password);
+			if ( mysqli_affected_rows($link) == 1 ) {
 				session_start();
 				$_SESSION['user'] = 'admin';
 				header('location: /films/login.php');
+
 			}
 		}
 	}
