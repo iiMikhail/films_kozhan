@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:8889
--- Время создания: Янв 25 2019 г., 09:58
+-- Время создания: Янв 27 2019 г., 22:34
 -- Версия сервера: 5.7.23
--- Версия PHP: 5.5.38
+-- Версия PHP: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,13 +34,33 @@ CREATE TABLE `films` (
 --
 
 INSERT INTO `films` (`id`, `name`, `type`, `year`, `description`, `photo`) VALUES
-(62, 'Человек-паук 2', 'Комедия', 2002, '', ''),
+(62, 'Человек-паук 2', 'Комедия', 2002, '', '617902870940.jpg'),
 (64, 'Железный человек', 'Комедия', 2002, '', ''),
 (65, 'Тор', 'Ужасы', 2000, '', ''),
-(68, 'Тор 2: Другие миры', 'Комедия', 2002, '', ''),
 (69, 'Тор: Рагнарек', 'Комедия', 2017, '', ''),
 (71, 'Техасс', 'Ужасы', 2012, 'Резня бензопилой', ''),
 (72, 'Мстители: Война бесконечности', 'Боевик', 2018, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `password` text NOT NULL,
+  `user-group` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `password`, `user-group`) VALUES
+(1, 'admin', 'admin', 'admin'),
+(2, 'user', 'user', 'user');
 
 --
 -- Индексы сохранённых таблиц
@@ -53,6 +73,12 @@ ALTER TABLE `films`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -61,3 +87,9 @@ ALTER TABLE `films`
 --
 ALTER TABLE `films`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
