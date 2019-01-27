@@ -46,9 +46,8 @@
 		return $film;
 	}
 ?>
-
 <?php 
-	function film_update($link, $title, $genre, $year, $description, $photo, $id) {
+	function film_update($link, $title, $genre, $year, $description, $id) {
 		echo "<pre>";
 		print_r($_FILES);
 		echo "</pre>";
@@ -60,9 +59,8 @@
 			$fileErrorMsg = $_FILES['photo']['error'];
 			$kaboom = explode(".", $fileName);
 			$fileExt = end($kaboom);
-			$photoFolderLocation = ROOT . 'data/films/';
-			$photoFolderLocationMin = ROOT . 'data/films/min/';
-			$photoFolderLocationFull = ROOT . 'data/films/full/';
+			$photoFolderLocation = 'data/films/full/';
+			$photoFolderLocationMin = 'data/films/min/';
 			list($width, $height) = getimagesize($fileTempLoc);
 			if( $width < 10 || $height < 10 ) {
 				$errors[] = "Это изображение некорректное";
@@ -76,7 +74,7 @@
 				$errors = "Неизвестная ошибка";
 			}
 			$uploadFile = $photoFolderLocation . $db_file_name;
-			$moveResult = move_uploaded_file($fileTempLoc, $db_file_name);
+			$moveResult = move_uploaded_file($fileTempLoc, $uploadFile);
 			if ($moveResult != true) {
 				$errors[] = "Загрузка файла не удалась";
 			}
@@ -93,7 +91,7 @@
 			type = '" . mysqli_real_escape_string($link, $genre) . "',
 			year = '" . mysqli_real_escape_string($link, $year) . "',
 			description = '" . mysqli_real_escape_string($link, $description) . "',
-			photo = '" . mysqli_real_escape_string($link, $db_file_name) . "'
+			photo = '" . mysqli_real_escape_string($link, $uploadFile) . "'
 			WHERE id = '" .mysqli_real_escape_string($link, $id) . "'";
 			if( mysqli_query($link, $query) ) {
 				$result = true;

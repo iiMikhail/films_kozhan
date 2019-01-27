@@ -15,7 +15,7 @@
 		if ( $_POST['title'] == '' ) {
 			echo "Необходимо ввести название фильма";
 		} else { 
-			$result = film_update($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_POST['description'], $_POST['photo'], $_GET['id']);
+			$result = film_update($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_POST['description'], $_GET['id']);
 		}
 	}
 	$film = get_film($link, $_GET['id'] );
