@@ -4,6 +4,7 @@
 	require_once('views/head.tpl');
 	$link = db_connect();
 	require('models/films.php');
+	session_start();
 	if ( @$_GET['action'] == 'delete' ) {
 		$result = delete_film($link, $_GET['id']);
 	} $result = true;
