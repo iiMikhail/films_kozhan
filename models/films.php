@@ -120,3 +120,16 @@ function  delete_film($link, $id){
 	}
 }
 ?>
+
+<?php 
+	function get_user($link, $userName, $userPassword ) {
+		$query = "SELECT * 
+		FROM `users` 
+		WHERE name = '" . mysqli_real_escape_string($link, $userName) . "'
+		AND password = '". mysqli_real_escape_string($link, $userPassword) ."'";
+		if( $result = mysqli_query($link, $query) ) {
+			$user = mysqli_fetch_array( $result );
+		}
+		return $user;
+	}
+?>

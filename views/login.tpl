@@ -1,12 +1,5 @@
 <div class="container user-content section-page">
-<?php
 
-
-
-
-
-
-?>
 	<div class="panel-holder mt-80 mb-40">
 		<div class="title-3 mt-0">Вход для администратора</div>
 		<form action="./login.php" method="POST">
