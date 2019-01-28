@@ -5,7 +5,6 @@
 	$link = db_connect();
 	include('views/add-film.tpl');
 	require('models/films.php');
-	session_start();
 	if ( array_key_exists( 'newFilm', $_POST ) ) {
 		if ( $_POST['title'] == '' ) {
 			echo "Необходимо ввести название фильма";

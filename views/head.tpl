@@ -25,8 +25,9 @@
 			<a href="./index.php" class="mr-30">Все фильмы</a>
 
 			<a href="./request.php" class="mr-30">Указать информацию</a>
-			<a href="./login.php" class="mr-30">Авторизация</a>
-
+			<?php if ( isset($_SESSION['user']) == '' ) { ?>
+				<a href="./login.php" class="mr-30">Авторизация</a>
+			<?php } ?>	
 		</nav>
 	</div>
 	<?php if(isset($_COOKIE['user-name'])){ ?>
