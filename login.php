@@ -14,7 +14,7 @@
 			if ( $user['user-group'] == $group ) {
 				session_start();
 				$_SESSION['user'] = $user['user-group'];
-				header('location: /films/index.php');
+				header('location: /index.php');
 			}	
 		}
 	}

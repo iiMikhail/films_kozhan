@@ -6,7 +6,7 @@
 	<div class="card row">
 		<div class="col">
 			<!-- Постер фильма -->
-			<img src="<?=HOST?>films/<?=$film[$key]['photo'] ?> " alt="<?=$film[$key]['name'] ?>">
+			<img src="<?=HOST?><?=$film[$key]['photo'] ?> " alt="<?=$film[$key]['name'] ?>">
 			<!-- //Постер фильма -->
 		</div>
 		<div class="col">
