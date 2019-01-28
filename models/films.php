@@ -14,11 +14,47 @@
 ?>
 <?php 
 	function new_film($link, $title, $genre, $year, $description) {
-		$query = "INSERT INTO `films` (`name`, `type`, `year`, `description`) VALUES ('" 
+		if ($_FILES['photo']['name'] != '' && $_FILES['photo']['tmp_name'] != '' ) {
+			$fileName = $_FILES['photo']['name'];
+			$fileTempLoc = $_FILES['photo']['tmp_name'];
+			$fileType = $_FILES['photo']['type'];
+			$fileSize = $_FILES['photo']['size'];
+			$fileErrorMsg = $_FILES['photo']['error'];
+			$kaboom = explode(".", $fileName);
+			$fileExt = end($kaboom);
+			$photoFolderLocation = 'data/films/full/';
+			$photoFolderLocationMin = 'data/films/min/';
+			list($width, $height) = getimagesize($fileTempLoc);
+			if( $width < 10 || $height < 10 ) {
+				$errors[] = "Это изображение некорректное";
+			}
+			$db_file_name = rand(100000000000, 999999999999) . "." . $fileExt;
+			if ( $fileSize > 10485760 ) {
+				$errors[] = "Изображение слишком большое";
+			} else if( !preg_match("/\.(gif|jpg|png)$/i", $fileName) ) {
+				$errors = "Загружено изображение неизвестного расширения";
+			} else if( $fileErrorMsg == 1 ) {
+				$errors = "Неизвестная ошибка";
+			}
+			$uploadFile = $photoFolderLocation . $db_file_name;
+			$moveResult = move_uploaded_file($fileTempLoc, $uploadFile);
+			if ($moveResult != true) {
+				$errors[] = "Загрузка файла не удалась";
+			}
+			// require_once("functions/image_resize_imagick.php");
+			// $targetFile = $photoFolderLocation . $db_file_name;
+			// $resizedFile = $photoFolderLocationMin . $db_file_name;
+			// $wmax = 135;
+			// $hmax = 200;
+			// $img = createThumbnail($targetFile, $wmax, $hmax);
+			// $img->writeImage($resizedFile);
+		}
+		$query = "INSERT INTO `films` (`name`, `type`, `year`, `description`, `photo`) VALUES ('" 
 		.mysqli_real_escape_string($link, $title) . "','"
 		.mysqli_real_escape_string($link, $genre) . "','"
 		.mysqli_real_escape_string($link, $year) . "','"
-		.mysqli_real_escape_string($link, $description) . "'
+		.mysqli_real_escape_string($link, $description) . "','"
+		.mysqli_real_escape_string($link, $uploadFile) . "'
 		) ";
 		$result = mysqli_query($link, $query);
 		if( $result ) {
@@ -48,9 +84,6 @@
 ?>
 <?php 
 	function film_update($link, $title, $genre, $year, $description, $id) {
-		echo "<pre>";
-		print_r($_FILES);
-		echo "</pre>";
 		if ($_FILES['photo']['name'] != '' && $_FILES['photo']['tmp_name'] != '' ) {
 			$fileName = $_FILES['photo']['name'];
 			$fileTempLoc = $_FILES['photo']['tmp_name'];

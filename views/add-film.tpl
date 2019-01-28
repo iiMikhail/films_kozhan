@@ -1,7 +1,7 @@
 <div class="container user-content section-page">
 	<div class="panel-holder mt-80 mb-40">
 		<div class="title-3 mt-0">Добавить фильм</div>
-		<form action="./new-film.php" method="POST">
+		<form enctype="multipart/form-data" action="./new-film.php" method="POST">
 			<div id="error" class="notify notify--error mb-20">Название фильма не может быть пустым.</div>
 			<div id="error" class="notify notify--error err-type mb-20">Жанр не может быть пустым.</div>
 			<div id="error" class="notify notify--error err-year mb-20">Год не может быть пустым.</div>
@@ -15,6 +15,9 @@
 				</div>
 			</div>
 			<textarea class="textarea mb-30" name="description" placeholder="Введите описание фильма"></textarea>
+			<div class="mb-20">
+				<input type="file" name="photo" value = "<?php echo $film[$key]['photo'] ?>"> 
+			</div>
 			<input class="button" type="submit" name="newFilm" value="Добавить" />
 		</form>
 	</div>
