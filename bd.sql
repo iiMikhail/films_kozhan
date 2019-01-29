@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:8889
--- Время создания: Янв 29 2019 г., 11:48
+-- Время создания: Янв 29 2019 г., 14:54
 -- Версия сервера: 5.7.23
 -- Версия PHP: 7.2.8
 
@@ -39,16 +39,18 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `password` text NOT NULL,
-  `user-group` text NOT NULL
+  `user-group` text NOT NULL,
+  `userName` text NOT NULL,
+  `userCity` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `password`, `user-group`) VALUES
-(1, 'admin', 'admin', 'admin'),
-(2, 'user', 'user', 'user');
+INSERT INTO `users` (`id`, `name`, `password`, `user-group`, `userName`, `userCity`) VALUES
+(1, 'admin', 'admin', 'admin', '', ''),
+(2, 'user', 'user', 'user', '', '');
 
 --
 -- Индексы сохранённых таблиц
