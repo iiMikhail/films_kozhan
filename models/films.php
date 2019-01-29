@@ -166,3 +166,16 @@ function  delete_film($link, $id){
 		return $user;
 	}
 ?>
+<?php 
+	function user_update($link, $id, $userName, $userCity ) {
+		$query = 
+			"UPDATE users SET 
+			userName = '" . mysqli_real_escape_string($link, $userName) . "',
+			userCity = '" . mysqli_real_escape_string($link, $userCity) . "'
+			WHERE id = '" .mysqli_real_escape_string($link, $id) . "'";
+		if( $result = mysqli_query($link, $query) ) {
+			$user = mysqli_fetch_array( $result );
+		}
+		return $user;
+	}
+?>

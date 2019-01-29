@@ -6,5 +6,5 @@
 		setcookie('user-name', $userName, $exrire);
 		setcookie('user-password', $userPassword, $exrire);
 	}
-	header('location: /films/request.php');
+	header('location: /request.php');
 ?>
