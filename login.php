@@ -1,7 +1,6 @@
 <?php 
 	require_once('config.php');
 	require_once('db.php');
-	require_once('views/head.tpl');
 	require('models/films.php');
 	$link = db_connect();
 	
@@ -25,5 +24,6 @@
 	}
 ?>
 <?php 
+require_once('views/head.tpl');
 include('views/login.tpl');
 require_once('views/footer.tpl') ?>

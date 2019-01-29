@@ -1,7 +1,6 @@
 <?php 
 	require_once('config.php');
 	require_once('db.php');
-	require_once('views/head.tpl');
 	$link = db_connect();
 	require('models/films.php');
 	if ( @$_GET['action'] == 'delete' ) {
@@ -32,6 +31,8 @@
 	<!-- //Обход массива, поиск фильма -->
 
 	<!-- Форма изменения фильма -->
-<?php require_once('views/edit.tpl') ?>
+<?php 
+require_once('views/head.tpl');
+require_once('views/edit.tpl') ?>
 </div>
 <?php require_once('views/footer.tpl') ?>
