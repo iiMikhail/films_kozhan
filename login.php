@@ -11,12 +11,9 @@
 		$group = 'admin';
 		$user = get_user($link, $_POST['user-name'], $_POST['user-password'] );
 		if( $user ) { 
-			// if ( $user['user-group'] == $group ) {
-				session_start();
 				$_SESSION['user'] = $user['user-group'];
 				$_SESSION['id'] = $user['id'];
 				header('location: /index.php');
-			// }	
 		}
 		if( isset($_POST['enter']) ) {
 			$userName = $_POST['user-name'];
