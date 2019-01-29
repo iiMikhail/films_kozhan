@@ -19,12 +19,16 @@
 			<?php if ( isset($_SESSION['user']) ) {
 				if($_SESSION['user'] =='admin') { ?>
 				<a href="./new-film.php" class="mr-30">Добавить фильм</a>
-				<a href="./logout.php" class="mr-30">Выход</a>
+				<a href="./request.php" class="mr-30">Указать информацию</a>
 				<?php }
 			} ?>
+			<?php if ( isset($_SESSION['user']) !== '' ) {?>
+				<a href="./request.php" class="mr-30">Указать информацию</a>
+				<a href="./logout.php" class="mr-30">Выход</a>
+			<?php } ?>
 			<a href="./index.php" class="mr-30">Все фильмы</a>
 
-			<a href="./request.php" class="mr-30">Указать информацию</a>
+			
 			<?php if ( isset($_SESSION['user']) == '' ) { ?>
 				<a href="./login.php" class="mr-30">Авторизация</a>
 			<?php } ?>

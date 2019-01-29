@@ -8,24 +8,18 @@
 ?>
 <!-- Скрипт обновления фильма -->
 <?php
+print_r($_SESSION['id']);
 	if ( array_key_exists( 'user-set', $_POST ) ) {
-		if ( $_POST['user-name'] == '' ) {
+		print_r($_POST);
+		if ( $_POST['userName'] == '' ) {
 			echo "Необходимо ввести имя пользователя";
 		} else {
-			echo "Запрос 1 выполнился";
-			$user = get_user($link, $_POST['user-name'], $_POST['user-password'] );
-			var_dump($user);
-			echo "Запрос 1 выполнился";
-			var_dump($user);
+			$user = get_user($link, $_POST['userName'], $_POST['userCity'] );
 		}
-		return $user;
-		var_dump($user);
 	}
-	echo "Запрос 2 выполнился";
 	
-	// $userUpdate = user_update($link, $user['id'], $_POST['userName'], $_POST['userCity'] );
+	$userUpdate = user_update($link, $_SESSION['id'], @$_POST['userName'], @$_POST['userCity'] );
 ?>
-	<!-- Форма изменения фильма -->
 
-</div>
-<?php require_once('views/footer.tpl') ?>
+<?php
+require_once('views/footer.tpl') ?>

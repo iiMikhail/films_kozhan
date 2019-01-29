@@ -12,7 +12,6 @@
 			echo "Фильм добавлен";
 			$result = new_film($link, $_POST['title'], $_POST['genre'], $_POST['year'], $_POST['description']);
 		}
-		print_r($_FILES['photo']);
 	}
 ?>
 <?php require_once('views/footer.tpl') ?>

@@ -11,8 +11,9 @@
 		}
 		return $film;
 	}
-?>
-<?php 
+/*
+Конец функции
+*/
 	function new_film($link, $title, $genre, $year, $description) {
 		if ($_FILES['photo']['name'] != '' && $_FILES['photo']['tmp_name'] != '' ) {
 			$fileName = $_FILES['photo']['name'];
@@ -36,7 +37,7 @@
 			} else if( $fileErrorMsg == 1 ) {
 				$errors = "Неизвестная ошибка";
 			}
-			$uploadFile = $photoFolderLocation . $db_file_name;
+			@$uploadFile = $photoFolderLocation . $db_file_name;
 			$moveResult = move_uploaded_file($fileTempLoc, $uploadFile);
 			if ($moveResult != true) {
 				$errors[] = "Загрузка файла не удалась";
@@ -68,8 +69,9 @@
 		}
 		return $result;
 	}
-?>
-<?php 
+/*
+Конец функции
+*/
 	function get_film($link, $id ){
 		$query = "SELECT * FROM `films` WHERE `id` = '" . mysqli_real_escape_string($link, $id) . "'";
 		$film = array();
@@ -81,8 +83,9 @@
 		}
 		return $film;
 	}
-?>
-<?php 
+/*
+Конец функции
+*/
 	function film_update($link, $title, $genre, $year, $description, $id) {
 		if ($_FILES['photo']['name'] != '' && $_FILES['photo']['tmp_name'] != '' ) {
 			$fileName = $_FILES['photo']['name'];
@@ -106,7 +109,7 @@
 			} else if( $fileErrorMsg == 1 ) {
 				$errors = "Неизвестная ошибка";
 			}
-			$uploadFile = $photoFolderLocation . $db_file_name;
+			@$uploadFile = $photoFolderLocation . $db_file_name;
 			$moveResult = move_uploaded_file($fileTempLoc, $uploadFile);
 			if ($moveResult != true) {
 				$errors[] = "Загрузка файла не удалась";
@@ -133,8 +136,9 @@
 			}
 			return $result;
 	}
-?>
-<?php  
+/*
+Конец функции
+*/ 
 function  delete_film($link, $id){
 	if ( @$_GET['action'] == 'delete' ) {
 		$query = "DELETE FROM `films` WHERE `id` = '" . mysqli_real_escape_string($link, $id) . "'LIMIT 1";
@@ -152,9 +156,9 @@ function  delete_film($link, $id){
 		}
 	}
 }
-?>
-
-<?php 
+/*
+Конец функции
+*/
 	function get_user($link, $userName, $userPassword ) {
 		$query = "SELECT * 
 		FROM `users` 
@@ -165,8 +169,9 @@ function  delete_film($link, $id){
 		}
 		return $user;
 	}
-?>
-<?php 
+/*
+Конец функции
+*/
 	function user_update($link, $id, $userName, $userCity ) {
 		$query = 
 			"UPDATE users SET 
@@ -174,8 +179,8 @@ function  delete_film($link, $id){
 			userCity = '" . mysqli_real_escape_string($link, $userCity) . "'
 			WHERE id = '" .mysqli_real_escape_string($link, $id) . "'";
 		if( $result = mysqli_query($link, $query) ) {
-			$user = mysqli_fetch_array( $result );
+			@$userUpdate = mysqli_fetch_array( $result );
 		}
-		return $user;
+		return $userUpdate;
 	}
 ?>

@@ -1,5 +1,5 @@
 <?php
-	if( isset($_POST['user-set']) ) {
+	if( isset($_POST['enter']) ) {
 		$userName = $_POST['user-name'];
 		$userPassword = $_POST['user-password'];
 		$exrire = time() + 60*60*24*30;
