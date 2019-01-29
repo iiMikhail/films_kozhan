@@ -22,7 +22,7 @@
 				<a href="./request.php" class="mr-30">Указать информацию</a>
 				<?php }
 			} ?>
-			<?php if ( isset($_SESSION['user']) !== '' ) {?>
+			<?php if ( isset($_SESSION['user'])  ) {?>
 				<a href="./request.php" class="mr-30">Указать информацию</a>
 				<a href="./logout.php" class="mr-30">Выход</a>
 			<?php } ?>
