@@ -6,7 +6,5 @@
 
 	define('HOST', 'http://' . $_SERVER['HTTP_HOST'] . '/');
 	define('ROOT', 'http://' . dirname(__FILE__) . '/');
-	if ( isset($_SESSION['user']) == '' ) {
-		session_start();
-	}
+	session_start();
 ?>
