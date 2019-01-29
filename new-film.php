@@ -3,7 +3,7 @@
 	require_once('db.php');
 	require_once('views/head.tpl');
 	$link = db_connect();
-	include('views/add-film.tpl');
+	
 	require('models/films.php');
 	if ( array_key_exists( 'newFilm', $_POST ) ) {
 		if ( $_POST['title'] == '' ) {
@@ -14,4 +14,6 @@
 		}
 	}
 ?>
-<?php require_once('views/footer.tpl') ?>
+<?php 
+include('views/add-film.tpl');
+require_once('views/footer.tpl') ?>

@@ -19,7 +19,6 @@
 			<?php if ( isset($_SESSION['user']) ) {
 				if($_SESSION['user'] =='admin') { ?>
 				<a href="./new-film.php" class="mr-30">Добавить фильм</a>
-				<a href="./request.php" class="mr-30">Указать информацию</a>
 				<?php }
 			} ?>
 			<?php if ( isset($_SESSION['user'])  ) {?>

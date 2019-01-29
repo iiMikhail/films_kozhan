@@ -4,7 +4,7 @@
 	require_once('views/head.tpl');
 	require('models/films.php');
 	$link = db_connect();
-	include('views/login.tpl');
+	
 	if ( isset($_POST['enter']) ) {
 		$userName = $_POST['user-name'];
 		$userPassword = $_POST['user-password'];
@@ -27,4 +27,6 @@
 	}
 	}
 ?>
-<?php require_once('views/footer.tpl') ?>
+<?php 
+include('views/login.tpl');
+require_once('views/footer.tpl') ?>

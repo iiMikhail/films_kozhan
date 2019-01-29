@@ -4,7 +4,7 @@
 	require_once('views/head.tpl');
 	$link = db_connect();
 	require('models/films.php');
-	require('request.tpl');
+	
 ?>
 <!-- Скрипт обновления фильма -->
 <?php
@@ -22,4 +22,5 @@ print_r($_SESSION['id']);
 ?>
 
 <?php
+require('request.tpl');
 require_once('views/footer.tpl') ?>
